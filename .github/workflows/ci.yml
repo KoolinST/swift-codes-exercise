@@ -68,6 +68,7 @@ jobs:
 
       - name: Generate coverage badge
         run: |
+          . venv/bin/activate
           coverage-badge -o coverage.svg -f
 
       - name: Upload coverage badge
