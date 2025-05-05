@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 # swift-codes-exercise
-=======
-## SWIFT Code Validation & CSV Importer
 A robust and production-ready application built with **Flask** and **PostgreSQL**, designed to validate **SWIFT/BIC codes** according to ISO 9362 and seamlessly import data from CSV files into a relational database. It includes error handling, logging, Docker support, and CI/CD via GitHub Actions.
 
 ---
