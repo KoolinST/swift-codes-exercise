@@ -23,7 +23,7 @@ A robust and production-ready application built with **Flask** and **PostgreSQL*
 
 Ensure you have the following installed:
 
-- Python 3.8 or higher
+- Python 3.9 or higher
 - PostgreSQL
 - Docker + Docker Compose
 
