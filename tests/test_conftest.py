@@ -1,14 +1,20 @@
 import pytest
+import logging
 from app.extensions import db
 from app import create_app
 from app.models.bank import Bank
 from flask import json
 from unittest.mock import patch
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
-
+logger.debug("Logger initialized, this should print to console!")
 @pytest.fixture
 def client():
     app = create_app("testing")
+    sql_uri = app.config['SQLALCHEMY_DATABASE_URI']
+
+    logger.debug(f"SQLALCHEMY_DATABASE_URI: {sql_uri}")
     with app.test_client() as client:
         with app.app_context():
             db.create_all()
@@ -16,7 +22,7 @@ def client():
         with app.app_context():
             db.session.remove()
             db.drop_all()
-
+    logger.debug(f"SQLALCHEMY_DATABASE_URI after test: {sql_uri}")
 
 def test_get_swift_code_details(client):
     bank = Bank(

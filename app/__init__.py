@@ -17,8 +17,7 @@ def create_app(config_name=None):
     db_user = os.getenv('POSTGRES_USER', 'remitly')
     db_password = os.getenv('POSTGRES_PASSWORD', 'remitly')
     db_host = os.getenv('DB_HOST', 'localhost' if config_name == 'testing' else 'db')
-    db_name = os.getenv('POSTGRES_DB',
-                        'swift_data_test' if config_name == 'testing' else 'swift_data')
+    db_name = os.getenv('POSTGRES_DB', 'swift_data_test' if config_name == 'testing' else 'swift_data')
     database_uri = f'postgresql://{db_user}:{db_password}@{db_host}:5432/{db_name}'
     app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

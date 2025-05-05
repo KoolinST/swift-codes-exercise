@@ -2,6 +2,19 @@ import pytest
 import pandas as pd
 from unittest.mock import patch, MagicMock
 from app.data_parser import parse_swift_codes
+import random
+import string
+
+
+def generate_swift_code(length=11):
+    """
+    Generates a fully random SWIFT code with the given length.
+    The default length is 11 characters.
+    """
+    characters = string.ascii_uppercase + string.digits
+    swift_code = ''.join(random.choice(characters) for _ in range(length))
+    return swift_code
+
 
 @pytest.fixture
 def mock_bank_class():
