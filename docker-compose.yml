@@ -1,0 +1,25 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - FLASK_ENV=${FLASK_ENV}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
